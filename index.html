@@ -2,7 +2,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script src="alloy.min.js"></script>
+  <!-- 1. Load SDK FIRST -->
+  <script src="alloy.min.js"></script>
+
+  <!-- 2. THEN your code -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      if (typeof alloy === "undefined") {
+        console.log("Web SDK not loaded");
+        return;
+      }
+
+      alloy("configure", {
+        edgeConfigId: "YOUR_DATASTREAM_ID",
+        orgId: "YOUR_ORG_ID"
+      });
+
+      alloy("sendEvent", {
+        xdm: {
+          eventType: "web.webpagedetails.pageViews"
+        }
+      });
+
+      console.log("Web SDK working");
+
+    });
+  </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantix - AI-Powered Analytics</title>
@@ -567,42 +593,5 @@ https://templatemo.com/tm-614-quantix-saas
             </div>
         </div>
     </footer>
-
-<!-- 1. Load Web SDK -->
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  if (typeof alloy === "undefined") {
-    console.log("Web SDK not loaded");
-    return;
-  }
-
-  alloy("configure", {
-    datastreamId: "YOUR_DATASTREAM_ID",
-    orgId: "YOUR_ORG_ID"
-  });
-
-  // Page view
-  alloy("sendEvent", {
-    xdm: {
-      eventType: "web.webpagedetails.pageViews"
-    }
-  });
-
-  // Click tracking
-  document.addEventListener("click", function(event) {
-    if (event.target.innerText.includes("Get Started Free")) {
-      alloy("sendEvent", {
-        xdm: {
-          eventType: "web.webinteraction.click"
-        }
-      });
-    }
-  });
-
-});
-</script>
-   
 </body>
 </html>
