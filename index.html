@@ -2,33 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 1. Load SDK FIRST -->
-  <script src="alloy.min.js"></script>
+ <script src="https://cdn1.adoberesources.net/alloy/2.19.1/alloy.min.js"></script>
 
-  <!-- 2. THEN your code -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
 
-      if (typeof alloy === "undefined") {
-        console.log("Web SDK not loaded");
-        return;
-      }
+    console.log("Checking Web SDK...");
 
-      alloy("configure", {
-        edgeConfigId: "c7c2dbbe-a0a1-439b-b372-37876a8f8238",
-        orgId: "aepsemea@AdobeOrg"
-      });
+    if (typeof alloy === "undefined") {
+      console.error("Web SDK not loaded");
+      return;
+    }
 
-      alloy("sendEvent", {
-        xdm: {
-          eventType: "web.webpagedetails.pageViews"
-        }
-      });
+    console.log("Web SDK loaded successfully");
 
-      console.log("Web SDK working");
-
+    alloy("configure", {
+      edgeConfigId: "test",   // temporary
+      orgId: "aepsemea@AdobeOrg"
     });
-  </script>
+
+    console.log("Configured");
+
+  });
+</script>
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantix - AI-Powered Analytics</title>
