@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<html>
 <head>
+  <title>Web SDK Test</title>
+
   <script src="alloy.min.js"></script>
 
   <script>
@@ -6,11 +10,16 @@
 
       if (typeof alloy === "undefined") {
         console.error("SDK not loaded");
-        return;
+      } else {
+        console.log("SDK loaded");
       }
-
-      console.log("SDK loaded");
 
     });
   </script>
+
 </head>
+
+<body>
+  <h1>Web SDK Test Page</h1>
+</body>
+</html>
