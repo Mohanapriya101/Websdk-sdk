@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Web SDK Test</title>
+  <title>Test</title>
+</head>
+
+<body>
+  <h1>Test Page</h1>
 
   <script src="alloy.min.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    console.log("script started");
+
+    setTimeout(function () {
+      console.log("checking alloy...");
 
       if (typeof alloy === "undefined") {
         console.error("SDK not loaded");
       } else {
         console.log("SDK loaded");
       }
-
-    });
+    }, 2000);
   </script>
 
-</head>
-
-<body>
-  <h1>Web SDK Test Page</h1>
 </body>
 </html>
